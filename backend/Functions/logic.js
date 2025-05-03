@@ -33,7 +33,25 @@ let all_func = {
     catch(error){
         res.status(501).json({msg : error.message})
     }
-   }
+   },
+
+ delete_record:async function(req,res){
+
+try{
+    let{id} =req.params
+let id_dhundo = await user.findById(id)
+if(id_dhundo){
+    await user.findByIdAndDelete(id_dhundo)
+    return res.status(200).json({msg:"Record Deleted Sucessfully"})
 }
+
+}
+ 
+catch(error){
+    res.status(501).json({msg:error.message})
+}
+ }
+}
+
  
 module.exports = all_func;
