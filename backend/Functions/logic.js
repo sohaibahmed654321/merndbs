@@ -50,6 +50,24 @@ if(id_dhundo){
 catch(error){
     res.status(501).json({msg:error.message})
 }
+ },
+
+ update_record:async function(req,res){
+
+    try {
+        let{id} = req.params
+        let {name,email,age} = req.body;
+
+        let id_dhundo = await user.findById(id);
+        if(id_dhundo){
+            await user.findByIdAndUpdate(id,{name : name, email : email, age : age})
+            res.status(200).json({msg:"Record Update Sucessfully"})
+        }
+        
+    } catch (error) {
+        res.status(501).json({msg : error.message})
+        
+    }
  }
 }
 
