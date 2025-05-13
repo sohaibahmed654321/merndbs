@@ -1,6 +1,7 @@
 import { ToastContainer, toast } from 'react-toastify';
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 export default function Register() {
   let [name, setName] = useState("");
   let [email, setEmail] = useState("");
@@ -52,6 +53,7 @@ export default function Register() {
       <label>Enter Your Age</label>
       <input className='form-control my-2' type="number" value={age} onChange={(e)=> setAge(e.target.value)} placeholder='Enter Age' /><br /><br />
       <button className='btn btn-outline-success my-2' onClick={save_data}>Submit</button>
+    <Link to="/log"></Link>
       <ToastContainer />
     </div>
   )
